@@ -58,4 +58,23 @@ describe('POST /contacts', () => {
          })
     })
 
-
+    describe('PUT /contacts', () => {
+        it('PUT id 3 should be new input ', (done) => {
+            request(app).put('/contacts/3')
+                .send({ name: 'TEST PUT', email: 'TEST@PUT.com', phone: '111-111-1111', url: 'www.PUT.com', notes: 'TEST PUT' })
+                .expect(200)
+                .then((res) => {
+                    request(app).get('/contacts/3')
+                        .then((res) => {
+                            let contact = res.body
+                            expect(contact).toBeDefined()
+                            expect(contact.name).toBe('TEST PUT')
+                            expect(contact.email).toBe('TEST@PUT.com')
+                            expect(contact.phone).toBe('111-111-1111')
+                            expect(contact.url).toBe('www.PUT.com')
+                            expect(contact.notes).toBe('TEST PUT')
+                        })
+                    done()
+                })
+        })
+    })
