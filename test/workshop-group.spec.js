@@ -78,3 +78,19 @@ describe('POST /contacts', () => {
                 })
         })
     })
+
+    describe('DELETE /contacts',()=>{
+        it('Delete id 3 SuccessFully ? ',(done)=>{
+        request(app).delete('/contacts/3')
+        .expect(204)
+        .then((res)=>{
+        request(app).get('/contacts/3')
+        .then((res)=>{
+          let contact = res.body
+          expect(contact).toBeDefined()
+          expect(contact.id).not.toBe(3)
+        })
+          done()
+        })
+      })
+    })
