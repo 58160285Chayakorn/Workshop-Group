@@ -16,8 +16,11 @@
     "url": "https://github.com/ballweera/swt-contact-list/issues"
   },
   "homepage": "https://github.com/ballweera/swt-contact-list#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "jest": "^21.2.1",
+    "supertest": "^3.0.0"
   }
 }
