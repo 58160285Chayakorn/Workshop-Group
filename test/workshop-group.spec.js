@@ -41,3 +41,21 @@ describe('GET /contacts/:id', () => {
     })
 })
 
+describe('POST /contacts', () => {
+        it('should created new contact', (done) => {
+            request(app).post('/contacts')
+                .send({name: 'TEST POST', email: 'TEST@post.com', phone: '111-111-1111', url: 'www.post.com', notes: 'TEST POST.'})
+                .expect(201).then((res) => {
+                    let contact = res.body
+                    expect(contact.id).not.toBeNull()                   
+                    expect(contact.name).toBe('TEST POST')
+                    expect(contact.email).toBe('TEST@post.com')
+                    expect(contact.phone).toBe('111-111-1111')
+                    expect(contact.url).toBe('www.post.com')
+                    expect(contact.notes).toBe('TEST POST.')
+                    done()
+                })
+         })
+    })
+
+
